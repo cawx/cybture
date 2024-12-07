@@ -1,0 +1,44 @@
+{
+  "reconnaissance": {
+    "network-scanning": [
+      {
+        "name": "Nmap",
+        "description": "A powerful network scanner for identifying hosts and services.",
+        "command": "nmap -sV <target-ip>",
+        "docs": "https://nmap.org/docs.html"
+      }
+    ],
+    "dns-enumeration": [
+      {
+        "name": "Gobuster",
+        "description": "Directory and DNS brute-forcing tool.",
+        "command": "gobuster dns -d <domain> -w <wordlist>",
+        "docs": "https://gobuster.org/docs"
+      }
+    ]
+  },
+  "enumeration": {
+    "web": [
+      {
+        "name": "gobuster",
+        "description": "A powerful network scanner for identifying hosts and services.",
+        "command": "nmap -sV <target-ip>",
+        "docs": "https://nmap.org/docs.html"
+      },
+      {
+        "name": "dirb",
+        "description": "A powerful network scanner for identifying hosts and services.",
+        "command": "nmap -sV <target-ip>",
+        "docs": "https://nmap.org/docs.html"
+      }
+    ],
+    "service": [
+      {
+        "name": "enum4linux",
+        "description": "Directory and DNS brute-forcing tool.",
+        "command": "gobuster dns -d <domain> -w <wordlist>",
+        "docs": "https://gobuster.org/docs"
+      }
+    ]
+  }
+}
