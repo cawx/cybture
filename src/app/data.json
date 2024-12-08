@@ -1,44 +1,32 @@
 {
-  "reconnaissance": {
-    "network-scanning": [
-      {
-        "name": "Nmap",
-        "description": "A powerful network scanner for identifying hosts and services.",
-        "command": "nmap -sV <target-ip>",
-        "docs": "https://nmap.org/docs.html"
-      }
-    ],
-    "dns-enumeration": [
-      {
-        "name": "Gobuster",
-        "description": "Directory and DNS brute-forcing tool.",
-        "command": "gobuster dns -d <domain> -w <wordlist>",
-        "docs": "https://gobuster.org/docs"
-      }
-    ]
-  },
-  "enumeration": {
-    "web": [
-      {
-        "name": "gobuster",
-        "description": "A powerful network scanner for identifying hosts and services.",
-        "command": "nmap -sV <target-ip>",
-        "docs": "https://nmap.org/docs.html"
-      },
-      {
-        "name": "dirb",
-        "description": "A powerful network scanner for identifying hosts and services.",
-        "command": "nmap -sV <target-ip>",
-        "docs": "https://nmap.org/docs.html"
-      }
-    ],
-    "service": [
-      {
-        "name": "enum4linux",
-        "description": "Directory and DNS brute-forcing tool.",
-        "command": "gobuster dns -d <domain> -w <wordlist>",
-        "docs": "https://gobuster.org/docs"
-      }
-    ]
+  "categories": {
+    "reconnaissance": {
+      "name": "Reconnaissance",
+      "commands": [
+        {
+          "id": "nmap",
+          "name": "nmap",
+          "description": "Network discovery and security auditing tool.",
+          "docsLink": "https://nmap.org/docs.html"
+        },
+        {
+          "id": "shodan",
+          "name": "shodan",
+          "description": "Search engine for internet-connected devices.",
+          "docsLink": "https://shodan.io"
+        }
+      ]
+    },
+    "network-analysis": {
+      "name": "Network Analysis",
+      "commands": [
+        {
+          "id": "wireshark",
+          "name": "wireshark",
+          "description": "Network protocol analyzer.",
+          "docsLink": "https://wireshark.org"
+        }
+      ]
+    }
   }
 }
