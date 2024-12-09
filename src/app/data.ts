@@ -1,39 +1,27 @@
-import cmdData from "./data.json";
+import data from "./data.json";
 
-export interface command {
+export interface ToolCommand {
+  command: string;
+  description: string;
+}
+
+export interface Tool {
   id: string;
   name: string;
   description: string;
   docsLink: string;
+  commands: ToolCommand[];
 }
 
-export interface category {
+export interface Category {
   name: string;
-  commands: command[];
+  tools: Tool[];
 }
 
-export function getAllPossiblePaths() {
-  const paths: { params: { category: string; command: string } }[] = [];
-
-  Object.keys(cmdData.categories).forEach((categorySlug) => {
-    cmdData.categories[categorySlug].commands.forEach((command) => {
-      paths.push({
-        params: {
-          category: categorySlug,
-          command: command.id,
-        },
-      });
-    });
-  });
-
-  return paths;
+export function getAllCategories() {
+  return data.categories;
 }
 
-export function getAllCategories(): Record<string, category> {
-  console.log(cmdData.categories);
-  return cmdData.categories;
-}
-
-export function getCategoryBySlug(categorySlug: string) {
-  return cmdData.categories[categorySlug];
+export function getCategoryBySlug(slug: string): Category {
+  return data.categories[slug];
 }

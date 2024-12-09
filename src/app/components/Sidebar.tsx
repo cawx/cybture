@@ -18,7 +18,7 @@ export default function Sidebar() {
                 {category.name}
               </h3>
               <ul className="pt-3">
-                {category.commands.map((cmd) => (
+                {category.tools.map((cmd) => (
                   <li key={cmd.id} className="border-l-2 border-white/20 pl-3">
                     <Link
                       className="inline-block text-white/80 hover:text-white truncate"

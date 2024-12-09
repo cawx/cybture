@@ -2,29 +2,59 @@
   "categories": {
     "reconnaissance": {
       "name": "Reconnaissance",
-      "commands": [
+      "tools": [
         {
           "id": "nmap",
-          "name": "nmap",
+          "name": "Nmap",
           "description": "Network discovery and security auditing tool.",
-          "docsLink": "https://nmap.org/docs.html"
+          "docsLink": "https://nmap.org/docs.html",
+          "commands": [
+            {
+              "command": "nmap -sV <ip>",
+              "description": "Version detection scan"
+            },
+            {
+              "command": "nmap -p- <ip>",
+              "description": "Scan all ports"
+            },
+            {
+              "command": "nmap -sC <ip>",
+              "description": "Run default scripts"
+            }
+          ]
         },
         {
           "id": "shodan",
-          "name": "shodan",
+          "name": "Shodan",
           "description": "Search engine for internet-connected devices.",
-          "docsLink": "https://shodan.io"
+          "docsLink": "https://shodan.io",
+          "commands": [
+            {
+              "command": "shodan search <query>",
+              "description": "Search for devices"
+            },
+            {
+              "command": "shodan host <ip>",
+              "description": "Get information about a specific IP"
+            }
+          ]
         }
       ]
     },
     "network-analysis": {
       "name": "Network Analysis",
-      "commands": [
+      "tools": [
         {
           "id": "wireshark",
-          "name": "wireshark",
+          "name": "Wireshark",
           "description": "Network protocol analyzer.",
-          "docsLink": "https://wireshark.org"
+          "docsLink": "https://wireshark.org",
+          "commands": [
+            {
+              "command": "wireshark -i <interface>",
+              "description": "Capture packets on a specific interface"
+            }
+          ]
         }
       ]
     }
