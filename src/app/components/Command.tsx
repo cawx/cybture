@@ -24,7 +24,7 @@ const Command = ({
 
   return (
     <div className="mb-4">
-      <p className="text-white/70 mb-2">{command.description}</p>
+      <p className="text-white/80 mb-2">{command.description}</p>
       <div
         onClick={handleCopy}
         className="bg-black/30 p-3 rounded flex justify-between items-center hover:cursor-pointer"

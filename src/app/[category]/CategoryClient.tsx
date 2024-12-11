@@ -20,7 +20,7 @@ export default function CategoryPageClient({
 
   return (
     <div className="flex">
-      <main className="p-4 w-full mx-auto max-w-[850px]">
+      <section className="p-4 w-full mx-auto max-w-[850px]">
         <div className="mb-8 font-light">
           <span className="text-white/50">Category {">"} </span>
           {category.name}
@@ -41,9 +41,11 @@ export default function CategoryPageClient({
 
         {category.tools.map((tool: Tool) => (
           <div key={tool.id} className="mb-16">
-            <div className="mb-4">
-              <h2 className="text-xl font-semibold">{tool.name}</h2>
-              <p className="text-white/80 mt-2 text-base">{tool.description}</p>
+            <div className="mb-4 flex items-center">
+              <h2 className="text-xl font-semibold mr-1">{tool.name}</h2>
+              <p className="text-white/50 text-base italic">
+                - {tool.description}
+              </p>
             </div>
 
             <div className="space-y-4">
@@ -64,7 +66,7 @@ export default function CategoryPageClient({
             )}
           </div>
         ))}
-      </main>
+      </section>
     </div>
   );
 }

@@ -10,32 +10,44 @@
           "docsLink": "https://nmap.org/docs.html",
           "commands": [
             {
-              "command": "nmap -sV <ip>",
-              "description": "Version detection scan"
+              "command": "nmap -T4 -n -sC -sV -Pn -p- <ip>",
+              "description": "Comprehensive scan: detect services, versions, run default scripts on all ports"
             },
             {
-              "command": "nmap -p- <ip>",
-              "description": "Scan all ports"
+              "command": "nmap -sS -T2 -p- -Pn -f -n <ip>",
+              "description": "Stealthy SYN scan with fragmentation to avoid detection"
             },
             {
-              "command": "nmap -sC <ip>",
-              "description": "Run default scripts"
+              "command": "nmap -sV -p- <ip>",
+              "description": "Scan all ports and determine service/version info"
             }
           ]
         },
         {
-          "id": "shodan",
-          "name": "Shodan",
-          "description": "Search engine for internet-connected devices.",
-          "docsLink": "https://shodan.io",
+          "id": "theharvester",
+          "name": "theHarvester",
+          "description": "Email and domain harvesting tool",
+          "docsLink": "https://github.com/laramies/theHarvester",
           "commands": [
             {
-              "command": "shodan search <query>",
-              "description": "Search for devices"
+              "command": "theHarvester -d example.com -b google,linkedin",
+              "description": "Harvest emails and subdomains from Google and LinkedIn"
             },
             {
-              "command": "shodan host <ip>",
-              "description": "Get information about a specific IP"
+              "command": "theHarvester -d example.com -l 500 -b all",
+              "description": "Comprehensive search with 500 results from all sources"
+            }
+          ]
+        },
+        {
+          "id": "maltego",
+          "name": "Maltego",
+          "description": "Open-source intelligence (OSINT) tool for data mining",
+          "docsLink": "https://www.maltego.com/",
+          "commands": [
+            {
+              "command": "maltego -transform \"<domain>\"",
+              "description": "Run OSINT transforms on a specific domain"
             }
           ]
         }
@@ -47,12 +59,163 @@
         {
           "id": "wireshark",
           "name": "Wireshark",
-          "description": "Network protocol analyzer.",
+          "description": "Network protocol analyzer",
           "docsLink": "https://wireshark.org",
           "commands": [
             {
-              "command": "wireshark -i <interface>",
-              "description": "Capture packets on a specific interface"
+              "command": "wireshark -i eth0",
+              "description": "Capture packets on ethernet interface"
+            },
+            {
+              "command": "tshark -r capture.pcap -Y \"http.request\"",
+              "description": "Filter and show only HTTP requests from a capture file"
+            }
+          ]
+        },
+        {
+          "id": "tcpdump",
+          "name": "TCPDump",
+          "description": "Command-line packet analyzer",
+          "docsLink": "https://www.tcpdump.org/",
+          "commands": [
+            {
+              "command": "tcpdump -i eth0 -w capture.pcap",
+              "description": "Capture packets on ethernet interface and save to file"
+            },
+            {
+              "command": "tcpdump -r capture.pcap 'port 80'",
+              "description": "Read capture file, filter for port 80 traffic"
+            }
+          ]
+        },
+        {
+          "id": "netcat",
+          "name": "Netcat",
+          "description": "Networking utility for reading and writing across networks",
+          "docsLink": "http://netcat.sourceforge.net/",
+          "commands": [
+            {
+              "command": "nc -l -p 4444",
+              "description": "Listen on port 4444"
+            },
+            {
+              "command": "nc <target> 4444",
+              "description": "Connect to target on port 4444"
+            }
+          ]
+        }
+      ]
+    },
+    "web-security": {
+      "name": "Web Security",
+      "tools": [
+        {
+          "id": "burpsuite",
+          "name": "Burp Suite",
+          "description": "Web vulnerability scanner and proxy",
+          "docsLink": "https://portswigger.net/burp",
+          "commands": [
+            {
+              "command": "burpsuite &",
+              "description": "Launch Burp Suite Community Edition"
+            }
+          ]
+        },
+        {
+          "id": "gobuster",
+          "name": "Gobuster",
+          "description": "Directory and file brute-forcing tool",
+          "docsLink": "https://github.com/OJ/gobuster",
+          "commands": [
+            {
+              "command": "gobuster dir -u http://example.com -w /usr/share/wordlists/dirb/common.txt",
+              "description": "Brute-force directories using common wordlist"
+            },
+            {
+              "command": "gobuster dns -d example.com -w /usr/share/wordlists/subdomains.txt",
+              "description": "Discover subdomains"
+            }
+          ]
+        }
+      ]
+    },
+    "password-cracking": {
+      "name": "Password Cracking",
+      "tools": [
+        {
+          "id": "hydra",
+          "name": "Hydra",
+          "description": "Online password cracking tool",
+          "docsLink": "https://github.com/vanhauser-thc/thc-hydra",
+          "commands": [
+            {
+              "command": "hydra -l admin -P /usr/share/wordlists/rockyou.txt ssh://example.com",
+              "description": "Brute-force SSH with username 'admin' and rockyou wordlist"
+            },
+            {
+              "command": "hydra -L users.txt -P passwords.txt http-post-form \"login.php:username=^USER^&password=^PASS^:Invalid credentials\"",
+              "description": "HTTP POST form brute-force with custom login failure message"
+            }
+          ]
+        },
+        {
+          "id": "hashcat",
+          "name": "Hashcat",
+          "description": "Advanced password recovery tool",
+          "docsLink": "https://hashcat.net/hashcat/",
+          "commands": [
+            {
+              "command": "hashcat -m 0 hashes.txt /usr/share/wordlists/rockyou.txt",
+              "description": "Crack MD5 hashes using rockyou wordlist"
+            },
+            {
+              "command": "hashcat -a 3 hashes.txt ?a?a?a?a",
+              "description": "Brute-force 4-character passwords with all character types"
+            }
+          ]
+        },
+        {
+          "id": "john",
+          "name": "John the Ripper",
+          "description": "Password cracking tool",
+          "docsLink": "https://www.openwall.com/john/",
+          "commands": [
+            {
+              "command": "john --wordlist=/usr/share/wordlists/rockyou.txt hashes.txt",
+              "description": "Crack hashes using rockyou wordlist"
+            }
+          ]
+        }
+      ]
+    },
+    "network-tools": {
+      "name": "Network Tools",
+      "tools": [
+        {
+          "id": "wireshark",
+          "name": "Wireshark",
+          "description": "Network protocol analyzer",
+          "docsLink": "https://wireshark.org",
+          "commands": [
+            {
+              "command": "wireshark -i eth0",
+              "description": "Capture packets on ethernet interface"
+            }
+          ]
+        },
+        {
+          "id": "scapy",
+          "name": "Scapy",
+          "description": "Packet manipulation program",
+          "docsLink": "https://scapy.net/",
+          "commands": [
+            {
+              "command": "scapy",
+              "description": "Launch Scapy interactive shell"
+            },
+            {
+              "command": "send(IP(dst=\"example.com\")/ICMP())",
+              "description": "Send ICMP ping packet"
             }
           ]
         }
