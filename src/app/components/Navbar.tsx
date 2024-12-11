@@ -8,7 +8,6 @@ export default function Navbar() {
   const setInput = useUserInputStore((state) => state.setInput);
   const handleChange = (key: string, value: string) => {
     setInput(key, value);
-    console.log(key, value);
   };
 
   return (
@@ -24,6 +23,7 @@ export default function Navbar() {
               <div className="min-w-0">
                 <span>Target ip</span>
                 <input
+                  id="target-ip"
                   value={inputs["ip"] || ""}
                   onChange={(e) => handleChange("ip", e.target.value)}
                   className="w-full mt-2 bg-[#252525] border-[1px] border-white/20 py-1 px-2 rounded-md"
@@ -33,6 +33,7 @@ export default function Navbar() {
               <div className="min-w-0">
                 <span>Your ip</span>
                 <input
+                  id="your-ip"
                   className="w-full mt-2 bg-[#252525] border-[1px] border-white/20 py-1 px-2 rounded-md"
                   placeholder="10.10.10.10"
                 />
@@ -40,6 +41,7 @@ export default function Navbar() {
               <div className="min-w-0">
                 <span>Port</span>
                 <input
+                  id="port"
                   className="w-full mt-2 bg-[#252525] border-[1px] border-white/20 py-1 px-2 rounded-md"
                   placeholder="8080"
                 />
@@ -47,6 +49,8 @@ export default function Navbar() {
               <div className="min-w-0">
                 <span>Username</span>
                 <input
+                  id="username"
+                  autoComplete="off"
                   className="w-full mt-2 bg-[#252525] border-[1px] border-white/20 py-1 px-2 rounded-md"
                   placeholder="admin"
                 />

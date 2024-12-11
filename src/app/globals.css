@@ -32,6 +32,6 @@ body {
   li,
   a,
   button {
-    @apply tracking-tight; /* Adjust to your preferred tracking class */
+    @apply tracking-tight;
   }
 }

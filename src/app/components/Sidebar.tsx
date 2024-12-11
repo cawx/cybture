@@ -8,6 +8,7 @@ export default function Sidebar() {
     <aside className="w-[250px] shrink-0 border-r-[1px] border-white/20">
       <div className="p-4 h-screen overflow-y-auto">
         <input
+          id="search"
           className="w-full bg-[#252525] border-[1px] border-white/20 py-1 px-2 rounded-md"
           placeholder="Search..."
         />

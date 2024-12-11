@@ -2,9 +2,9 @@ import { getAllCategories, getCategoryBySlug } from "../data";
 import CategoryPageClient from "./CategoryClient";
 
 export async function generateStaticParams() {
-  const categories = getAllCategories();
+  const categories = await getAllCategories();
 
-  return Object.keys(categories).map((slug) => ({
+  return Object.entries(categories).map(([slug]) => ({
     category: slug,
   }));
 }
@@ -14,7 +14,9 @@ export default async function CategoryPage({
 }: {
   params: { category: string };
 }) {
-  const category = getCategoryBySlug(params.category);
+  const { category } = await params;
 
-  return <CategoryPageClient initialCategory={category} />;
+  const categoryData = await getCategoryBySlug(category);
+
+  return <CategoryPageClient initialCategory={categoryData} />;
 }

@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useCallback } from "react";
 import { useUserInputStore } from "../useStore";
 import Image from "next/image";
 
@@ -14,13 +14,13 @@ const Command = ({
     return command.command.replace(/<ip>/g, inputs.ip || "<ip>");
   }, [command.command, inputs.ip]);
 
-  const handleCopy = () => {
+  const handleCopy = useCallback(() => {
     navigator.clipboard.writeText(replacedCommand);
     setIsCopied(true);
     setTimeout(() => {
       setIsCopied(false);
     }, 2000);
-  };
+  }, [replacedCommand]);
 
   return (
     <div className="mb-4">
