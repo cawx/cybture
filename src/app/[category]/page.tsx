@@ -14,7 +14,7 @@ export default async function CategoryPage({
 }: {
   params: { category: string };
 }) {
-  const { category } = await params;
+  const { category } = params;
 
   const categoryData = await getCategoryBySlug(category);
 
