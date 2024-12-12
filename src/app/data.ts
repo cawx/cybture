@@ -23,5 +23,5 @@ export function getAllCategories() {
 }
 
 export function getCategoryBySlug(slug: string): Category {
-  return data.categories[slug];
+  return data.categories[slug as keyof typeof data.categories];
 }
