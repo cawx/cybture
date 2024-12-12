@@ -1,33 +1,39 @@
-import { Metadata } from "next";
 import { getAllCategories, getCategoryBySlug } from "../data";
 import CategoryPageClient from "./CategoryClient";
 
+type Params = Promise<{ category: string }>;
+type SearchParams = Promise<{ [key: string]: string | string[] | undefined }>;
+
 export async function generateStaticParams() {
   const categories = await getAllCategories();
+
   return Object.entries(categories).map(([slug]) => ({
     category: slug,
   }));
 }
 
-export default async function CategoryPage({
-  params,
-}: {
-  params: { category: string };
+export async function generateMetadata(props: {
+  params: Params;
+  searchParams: SearchParams;
 }) {
-  const { category } = params;
-  const categoryData = await getCategoryBySlug(category);
-  return <CategoryPageClient initialCategory={categoryData} />;
-}
+  const params = await props.params;
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { category: string };
-}): Promise<Metadata> {
-  const { category } = params;
-  const categoryData = await getCategoryBySlug(category);
+  const category = params.category;
 
   return {
-    title: categoryData.name,
+    title: `Category: ${category}`,
   };
+}
+
+export default async function CategoryPage(props: {
+  params: Params;
+  searchParams: SearchParams;
+}) {
+  const params = await props.params;
+
+  const { category } = params;
+
+  const categoryData = await getCategoryBySlug(category);
+
+  return <CategoryPageClient initialCategory={categoryData} />;
 }
