@@ -9,7 +9,7 @@ honestly sometimes i felt that typescript causes more issues than it solves. rea
 ### whats next?
 - expanding the list of tools with more in-depth research and useful commands, along with sufficient information to make them truly helpful.
 - providing users with more input options beyond just the target machine IP
-- implementing command generators and/or an AI helper to make the experience even more interactive.
+- implementing command generators and/or maybe an AI helper to make the experience even more interactive.
 
 ## tech stack
 next js (15.0.4)<br>
