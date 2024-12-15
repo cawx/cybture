@@ -8,7 +8,7 @@ A collection of popular tool commands designed for quick and easy access during 
 honestly sometimes i felt that typescript causes more issues than it solves. react context api with asynchronous functions will also haunt me for some time now.
 ### whats next?
 - expanding the list of tools with more in-depth research and useful commands, along with sufficient information to make them truly helpful.
-- providing users with more input options beyond just the target machine IP
+- providing users with more input options beyond just the target machine IP.
 - implementing command generators and/or maybe an AI helper to make the experience even more interactive.
 
 ## tech stack
