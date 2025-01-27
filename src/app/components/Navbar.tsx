@@ -2,6 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import { useUserInputStore } from "../useStore";
+import Link from "next/link";
 
 export default function Navbar() {
   const inputs = useUserInputStore((state) => state.inputs);
@@ -14,14 +15,14 @@ export default function Navbar() {
     <nav className="border-b-[1px] border-white/20 py-4 text-base">
       <div className="max-w-[1550px] mx-auto px-4">
         <div className="flex">
-          <div className="flex items-center w-[250px] px-4">
+          <Link href="/" className="flex items-center w-[250px] px-4">
             <Image src="/Logo.svg" width={26} height={16} alt="cybture logo" />
             <h1 className="text-xl font-medium pl-3">cybture</h1>
-          </div>
+          </Link>
           <div className="flex-1">
             <div className="grid grid-cols-4 gap-4">
               <div className="min-w-0">
-                <span>Target ip</span>
+                <label>Target ip</label>
                 <input
                   id="target-ip"
                   value={inputs["ip"] || ""}
@@ -31,7 +32,7 @@ export default function Navbar() {
                 />
               </div>
               <div className="min-w-0">
-                <span>Your ip</span>
+                <label>Your ip</label>
                 <input
                   id="your-ip"
                   className="w-full mt-2 bg-[#252525] border-[1px] border-white/20 py-1 px-2 rounded-md"
@@ -39,7 +40,7 @@ export default function Navbar() {
                 />
               </div>
               <div className="min-w-0">
-                <span>Port</span>
+                <label>Port</label>
                 <input
                   id="port"
                   className="w-full mt-2 bg-[#252525] border-[1px] border-white/20 py-1 px-2 rounded-md"
@@ -47,7 +48,7 @@ export default function Navbar() {
                 />
               </div>
               <div className="min-w-0">
-                <span>Username</span>
+                <label>Username</label>
                 <input
                   id="username"
                   autoComplete="off"
